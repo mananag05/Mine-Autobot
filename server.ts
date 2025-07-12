@@ -7,7 +7,7 @@ import claimAndGiftMonthlyJartex from "./Bots/jartex/jartexClaimAndGiftMonthly";
 dotenv.config();
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 
@@ -36,7 +36,6 @@ app.post("/jartex-monthly", async (req: Request, res: Response) => {
         res.status(500).json({ error: "Bot flow failed." });
       }
     });
-
   } catch {
     res.status(500).json({ error: "Bot failed to start." });
   }
@@ -64,7 +63,6 @@ app.post("/jartex-claim-kits", async (req: Request, res: Response) => {
         res.status(500).json({ error: "Bot kit claim flow failed." });
       }
     });
-
   } catch {
     res.status(500).json({ error: "Bot failed to start." });
   }
